@@ -1,10 +1,9 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function doubts() {
-  // const [questionTitle, setQuestionTitle] = useState('');
-  // const [questionDescription, setQuestionDescription] = useState('');
+  
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
@@ -21,18 +20,21 @@ export default function doubts() {
         // Update the state with the fetched questions
         setQuestions(data.questions);
       });
-  }, []); 
-
-export default function pyqs() {
+  }, []);
 
   const { user, error, isLoading } = useUser();
 
+
   if (!user) {
-    return (<>
-      <div className="relative flex min-h-screen flex-col items-center justify-center bg-[#181818] overflow-hidden">
-        <h1 className="text-bold text-4xl text-white font-thin">You need to be logged in to view this page!</h1>
-      </div>
-    </>)
+    return (
+      <>
+        <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#181818]">
+          <h1 className="text-bold text-4xl font-thin text-white">
+            You need to be logged in to view this page!
+          </h1>
+        </div>
+      </>
+    );
   }
 
   return (
