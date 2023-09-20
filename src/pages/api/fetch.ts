@@ -3,8 +3,6 @@ import { YoutubeDataAPI } from "youtube-v3-api";
 import { env } from "~/env.mjs";
 import axios from 'axios';
 
-const api = new YoutubeDataAPI(env.YT_API_KEY);
-
 const connecting_words = ['and', 'or', 'in', 'of', 'at']
 
 const recommends = ['Neso Academy', 'Dr.Gajendra Purohit', 'Gate Smashers', 'Abdul Bari', 'Jenny\'s Lectures CS IT']
@@ -72,6 +70,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     await axios.get(VIEW_URL).then(e => {
       let data = e.data.items as VideoResult[]
+      //@ts-ignore
       data = data.filter(e => {
         return e.snippet.channelTitle.includes(req.query.filter as string)
       }).sort((a, b) => {
@@ -106,6 +105,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .slice(0, 5)
 
       const recommendedMatches = data.filter((result) =>
+      //@ts-ignore
         recommends.includes(result.channel)
       );
 
