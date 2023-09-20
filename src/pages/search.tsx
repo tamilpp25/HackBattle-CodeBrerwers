@@ -52,7 +52,7 @@ export default function search() {
       </button>
       {/* <div>Data: {data ? JSON.stringify(data) : "No data available"}</div> */}
       <>
-        {data ? data.map((e: IVideoData, index) => (
+        {data ? data.map((e: IVideoData, index: number) => (
           <div key={index} className="px-4 p-5">
             <VideoData info={e}/>
           </div>

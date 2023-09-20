@@ -25,6 +25,15 @@ export default function Home() {
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight">
             Syllabus-Powered Exam Prep: Uncover Videos with Ease!
           </h1>
+
+          {/* "Get Started" Button */}
+          <a
+            href="/search"
+            className="text-lg sm:text-xl font-bold bg-teal-400 hover:bg-teal-600 text-white px-6 py-3 rounded-full mt-8 inline-block transition duration-300 ease-in-out shadow-lg"
+            style={{ backgroundColor: "#40E0D0", color: "white" }}
+          >
+            Get Started
+          </a>
         </div>
       </main>
     </>
