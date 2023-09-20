@@ -23,6 +23,7 @@ export default function pyqs() {
 
       <main className="relative flex min-h-screen flex-col items-center justify-center bg-[#181818] overflow-hidden">
         <h1 className="mt-8 text-4xl text-white">Doubts</h1>
+        <h2 className="text-white font-thin">Welcome back! {user.nickname!}</h2>
         <div className="flex w-[1000px] mt-20"> {/* Adjust the width as needed */}
           {/* Left Side - Input Form */}
           <div className="w-[350px] mr-12">
