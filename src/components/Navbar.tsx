@@ -1,4 +1,5 @@
-import { Link, animateScroll } from "react-scroll";
+// import { Link, animateScroll } from "react-scroll";
+import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
@@ -20,16 +21,7 @@ const Navbar = () => {
     >
       <div className="m-auto flex max-w-[1240px] items-center justify-between p-4 text-white">
         <Link
-          to="#"
           href="/#"
-          smooth={true}
-          duration={500}
-          onClick={() => {
-            animateScroll.scrollToTop({
-              duration: 500,
-              smooth: "easeInOutQuart",
-            });
-          }}
         >
           <div className="flex items-center">
             <Image
@@ -54,51 +46,23 @@ const Navbar = () => {
         <ul style={{ color: `${textColor}` }} className="hidden sm:flex">
           <li className="p-4">
             <Link
-              to="#"
               href="/search"
-              smooth={true}
-              duration={500}
-              onClick={() => {
-                animateScroll.scrollToTop({
-                  duration: 500,
-                  smooth: "easeInOutQuart",
-                });
-              }}
             >
               Course finder
             </Link>
           </li>
           <li className="p-4">
             <Link
-              to="about"
-              href="/#about"
-              smooth={true}
-              duration={500}
-              offset={-50}
+              href="/doubts"
             >
               Doubts
             </Link>
           </li>
           <li className="p-4">
             <Link
-              to="products"
-              href="/#products"
-              smooth={true}
-              duration={500}
-              offset={-130}
+              href="/pyqs"
             >
               PYQs
-            </Link>
-          </li>
-          <li className="p-4">
-            <Link
-              to="contact"
-              href="/#contact"
-              smooth={true}
-              duration={500}
-              offset={-100}
-            >
-              Sign Out
             </Link>
           </li>
         </ul>
