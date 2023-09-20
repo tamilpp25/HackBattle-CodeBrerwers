@@ -14,6 +14,9 @@ interface VideoDataProps {
 }
 
 export default function VideoData({ info }: VideoDataProps) {
+
+    console.log(`https://www.youtube.com/embed/${info.id}`)
+
   return (
     <div className="mx-auto max-w-md overflow-hidden rounded-lg bg-white shadow-lg">
       <div className="relative">
