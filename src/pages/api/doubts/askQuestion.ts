@@ -2,7 +2,6 @@ import { type NextApiRequest, type NextApiResponse } from "next";
 import { db } from "../../../server/db";
 
 interface AskQuestionBody {
-  id: string;
   title: string;
   question: string;
   userId: string;
