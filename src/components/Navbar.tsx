@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -12,7 +13,7 @@ const Navbar = () => {
     setNav(!nav);
   };
 
-
+  const { user, error, isLoading } = useUser();
 
   return (
     <div
@@ -60,9 +61,9 @@ const Navbar = () => {
           </li>
           <li className="p-4">
             <Link
-              href="/pyqs"
+              href={user ? `/api/auth/logout` : `/api/auth/login`}
             >
-              PYQs
+              {user ? 'Logout' : 'Login'}
             </Link>
           </li>
         </ul>
