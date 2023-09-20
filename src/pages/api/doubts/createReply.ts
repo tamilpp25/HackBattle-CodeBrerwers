@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return;
     }
 
-    if (!db.user.findFirst({
+    if (!db.user.findUnique({
       where: {
         id: body.userId
       }
@@ -29,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return;
     }
 
-    const question = await db.question.findFirst({
+    const question = await db.question.findUnique({
       where: {
         id: body.questionId
       }

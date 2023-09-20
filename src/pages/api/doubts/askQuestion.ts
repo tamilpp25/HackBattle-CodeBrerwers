@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return;
     }
 
-    if (!db.user.findFirst({
+    if (!db.user.findUnique({
       where: {
         id: body.userId
       }

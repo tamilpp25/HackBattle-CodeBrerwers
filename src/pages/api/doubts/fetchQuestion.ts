@@ -17,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return;
     }
 
-    const question = await db.question.findFirst({
+    const question = await db.question.findUnique({
       where: {
         id: req.query.id as string
       }
