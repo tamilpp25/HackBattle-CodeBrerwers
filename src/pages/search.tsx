@@ -37,32 +37,33 @@ export default function search() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-[#181818]">
-      <div className="p-4 justify-between items-center flex flex-col">
-        <Image className="p-3" src="/favicon.ico" alt="logo" height={75} width={75} />
-        <h1 className="text-5xl text-white font-serif">TeachSync</h1>
+      <div className="flex flex-col items-center justify-between p-4">
+        <Image
+          className="p-3"
+          src="/favicon.ico"
+          alt="logo"
+          height={75}
+          width={75}
+        />
+        <h1 className="font-serif text-5xl text-white">TeachSync</h1>
       </div>
       <input
         type="text"
         value={input}
         onChange={handleChange}
         placeholder="Enter your topics"
-        className="placeholder-[#464e4e]::placeholder w-96 m-3 mb-4 text-left mx-10 rounded-3xl border-2 border-[#464e4e] bg-transparent p-2 font-semibold text-white"
+        className="placeholder-[#464e4e]::placeholder m-3 mx-10 mb-4 w-96 rounded-3xl border-2 border-[#464e4e] bg-transparent p-2 text-left font-semibold text-white"
       />
       <button
-        className="rounded-3xl bg-[#40e0d0] px-5 py-2 text-center text-1xl font-semibold"
+        className="text-1xl rounded-3xl bg-[#40e0d0] px-5 py-2 text-center font-semibold"
         onClick={handleSubmit}
       >
         Search
       </button>
       {/* <div>Data: {data ? JSON.stringify(data) : "No data available"}</div> */}
       <>
-        {data ? data.map((e: IVideoData, index) => (
-          <div key={index} className="px-4 p-5">
-            <VideoData info={e}/>
-          </div>
-        )) : ""}
         {data
-          ? data.map((e: IVideoData, index) => (
+          ? data.map((e: IVideoData, index: number) => (
               <div key={index} className="p-5 px-4">
                 <VideoData info={e} />
               </div>
