@@ -1,6 +1,27 @@
 import Head from "next/head";
+import { useState, useEffect } from "react";
 
-export default function pyqs() {
+export default function doubts() {
+  // const [questionTitle, setQuestionTitle] = useState('');
+  // const [questionDescription, setQuestionDescription] = useState('');
+  const [questions, setQuestions] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/doubts/queryQuestions", {
+      method: "GET",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Update the state with the fetched questions
+        setQuestions(data.questions);
+      });
+  }, []); 
+
   return (
     <>
       <Head>
@@ -11,8 +32,7 @@ export default function pyqs() {
 
       <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black">
         <h1 className="mt-8 text-4xl text-white">Doubts</h1>
-        <div className="flex w-[1000px] mt-20"> {/* Adjust the width as needed */}
-          {/* Left Side - Input Form */}
+        <div className="flex w-[1000px] mt-20">
           <div className="w-[350px] mr-12">
             <input
               type="text"
@@ -27,19 +47,24 @@ export default function pyqs() {
               Submit
             </button>
           </div>
-
-          {/* Right Side - Questions Display */}
           <div className="flex-1 border-white border h-96 px-4 py-2">
+            <div className="flex justify-center mt-4">
+              <input
+                type="text"
+                className="w-[300px] px-4 py-2 mr-2"
+                placeholder="Search..."
+              />
+              <button className="px-4 py-2 bg-blue-500 text-white">Search</button>
+            </div>
             {/* Display questions here */}
-            <div className="mb-2">
-              <h2 className="text-white text-lg">Question 1</h2>
-              <p className="text-white">This is the question description.</p>
-            </div>
-            <div className="mb-2">
-              <h2 className="text-white text-lg">Question 2</h2>
-              <p className="text-white">Another question description.</p>
-            </div>
-            {/* Add more questions as needed */}
+            {questions.map((question, index) => (
+              <div key={index} className="mb-2 mt-4">
+                <a href="#">
+                  <h2 className="text-white text-lg hover:text-cyan-500">{question.title}</h2>
+                </a>
+                <p className="text-white">{question.content}</p>
+              </div>
+            ))}
           </div>
         </div>
       </main>
