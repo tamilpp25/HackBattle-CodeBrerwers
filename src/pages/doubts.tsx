@@ -1,3 +1,4 @@
+import { useUser } from "@auth0/nextjs-auth0/client";
 import Head from "next/head";
 import { useState, useEffect } from "react";
 
@@ -22,6 +23,18 @@ export default function doubts() {
       });
   }, []); 
 
+export default function pyqs() {
+
+  const { user, error, isLoading } = useUser();
+
+  if (!user) {
+    return (<>
+      <div className="relative flex min-h-screen flex-col items-center justify-center bg-[#181818] overflow-hidden">
+        <h1 className="text-bold text-4xl text-white font-thin">You need to be logged in to view this page!</h1>
+      </div>
+    </>)
+  }
+
   return (
     <>
       <Head>
@@ -30,9 +43,11 @@ export default function doubts() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black">
+      <main className="relative flex min-h-screen flex-col items-center justify-center bg-[#181818] overflow-hidden">
         <h1 className="mt-8 text-4xl text-white">Doubts</h1>
-        <div className="flex w-[1000px] mt-20">
+        <h2 className="text-white font-thin">Welcome back! {user.nickname!}</h2>
+        <div className="flex w-[1000px] mt-20"> {/* Adjust the width as needed */}
+          {/* Left Side - Input Form */}
           <div className="w-[350px] mr-12">
             <input
               type="text"
