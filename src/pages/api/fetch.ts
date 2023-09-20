@@ -83,7 +83,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           title: e.snippet.title,
           desc: e.snippet.description,
           url: `https://youtube.com/watch?v=${e.id}`,
-          tags: e.snippet.tags
+          tags: e.snippet.tags,
+          id: e.id
         }
       })
         .filter(e => {
