@@ -11,18 +11,7 @@ const Navbar = () => {
     setNav(!nav);
   };
 
-  useEffect(() => {
-    const changeColor = () => {
-      if (window.scrollY >= 90) {
-        setColor("#700e2b");
-        setTextColor("#ffffff");
-      } else {
-        setColor("transparent");
-        setTextColor("#ffffff");
-      }
-    };
-    window.addEventListener("scroll", changeColor);
-  }, []);
+
 
   return (
     <div
@@ -66,7 +55,7 @@ const Navbar = () => {
           <li className="p-4">
             <Link
               to="#"
-              href="localhost:3000/search"
+              href="/search"
               smooth={true}
               duration={500}
               onClick={() => {
